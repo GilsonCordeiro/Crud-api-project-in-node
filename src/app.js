@@ -1,12 +1,19 @@
-
 import express from 'express';
-const app = express();
-const PORT = 3000; 
+//import users from './dados/dados.js';
 import users from './dados/dados.js';
+const app = express();
+
+//Tell express to read body as json
+app.use(express.json())
 
 app.get('/users', (req, res) => {
     //res.send('Subindo aplicacao node')
     res.status(200).send(users)
+});
+
+app.post('/users',(req, res) => {
+    users.push(req.body)
+    res.status(201).send('Seleção cadastrada com sucesso!')
 });
 
 app.get('/users/:id', (req, res) => {
@@ -19,8 +26,4 @@ app.get('/users/:id', (req, res) => {
     res.status(200).send(user)
 });
 
-
-app.listen(PORT, () => {
-    console.log(`Server running at address http://localhost:${PORT}`);
-    
-});
+export default app;
