@@ -25,4 +25,8 @@ const users = [
     }
 ];
 
+// function getById(id) {
+//     return users.filter(user => user.id == id)
+// }
+
 export default users;
